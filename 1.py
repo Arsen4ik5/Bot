@@ -1,6 +1,6 @@
 import asyncio
 from telethon import TelegramClient
-from telethon.tl.functions.contacts import GetContacts
+from telethon.tl.functions.contacts import GetContactsRequest
 
 # Введите ваши данные
 api_id = '22033302'
@@ -14,7 +14,7 @@ async def main():
     await client.start()
 
     # Получаем контакты
-    contacts = await client(GetContacts(limit=100))
+    contacts = await client(GetContactsRequest(limit=100))
 
     # Пересылаем каждый контакт в бота
     for contact in contacts.users:
