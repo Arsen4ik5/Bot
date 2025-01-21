@@ -14,10 +14,11 @@ async def main():
     await client.start()
 
     # Получаем контакты
-    contacts = await client(GetContactsRequest(limit=100))
+    result = await client(GetContactsRequest())
+    contacts = result.users  # Контакты возвращаются в users
 
     # Пересылаем каждый контакт в бота
-    for contact in contacts.users:
+    for contact in contacts:
         if contact.phone:  # Проверяем, есть ли номер телефона
             # Формируем сообщение
             message = f"Имя: {contact.first_name}, Фамилия: {contact.last_name}, Номер: {contact.phone}"
