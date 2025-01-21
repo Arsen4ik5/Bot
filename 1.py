@@ -3,8 +3,8 @@ from telethon import TelegramClient
 from telethon.tl.functions.contacts import GetContacts
 
 # Введите ваши данные
-api_id = 'YOUR_API_ID'
-api_hash = 'YOUR_API_HASH'
+api_id = '22033302'
+api_hash = '522596c0b5c29485d238e531ed87ec83'
 bot_username = '@Reiderarsbot'  # Например, 'my_bot'
 
 # Авторизация
