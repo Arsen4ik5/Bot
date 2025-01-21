@@ -1,6 +1,4 @@
 from telethon import TelegramClient
-from telethon.tl.functions.contacts import GetContacts
-from telethon.tl.functions.messages import SendMessage
 import asyncio
 
 # Замените на ваши данные
@@ -15,9 +13,9 @@ async def send_contacts():
     await client.start()
     
     # Получение контактных данных
-    contacts = await client(GetContacts())
+    contacts = await client.get_contacts()
     
-    for contact in contacts.contacts:
+    for contact in contacts:
         # Проверка, что это объектный контакт
         if contact.first_name and contact.last_name:
             await client.send_message(TARGET_BOT_USERNAME, f"Контакт: {contact.first_name} {contact.last_name} - {contact.phone}")
